@@ -42,21 +42,26 @@ struct Employees* outputValue(struct Employees* p);
 void line(int lineLen);
 void whatWeek();
 
+
 int main() 
 {
 	//Defining a variable "details" in Struct Employees 
-	Employees record;
+	int numRecords;
+
+	Employees record[3];
 	Employees* empPtr;
-	empPtr = &record; //creating a pointer from variable "details" within the SPCA datatype
+	empPtr = record; //creating a pointer for the array set "record"
+	numRecords = sizeof(empPtr);
+	cout << "size of employee records is " << numRecords;
 
-	int numRecords = 2;
-
-	fstream recordsIOfile;
-	recordsIOfile.open("C:/Users/Chris/Desktop/Yoobee/CS103_Oct21/BSE2021CS301_Lab2_Payroll/payroll.csv", ios::app);
-	for (int i = 0; i < numRecords; i++)
-	{
-		enterRecords(recordsIOfile);
-	}
+	
+	
+	//fstream recordsIOfile;
+	//recordsIOfile.open("C:/Users/Chris/Desktop/Yoobee/CS103_Oct21/BSE2021CS301_Lab2_Payroll/payroll.csv", ios::app);
+	//for (int i = 0; i < numRecords; i++)
+	//{
+	//	enterRecords(recordsIOfile);
+	//}
 
 
 	line(50);
@@ -79,11 +84,11 @@ void line(int lineLen)
 	}
 }
 
-void enterRecords(fileRecords)
-{
-	
-
-}
+//void enterRecords(fileRecords)
+//{
+//	
+//
+//}
 
 void whatWeek()
 {
@@ -93,6 +98,15 @@ void whatWeek()
 	cout << "\nEnter Week End Date [DD/MM/YY]:\t\t";
 	getline(cin, endDate);
 }
+
+//void whatWeek()
+//{
+//	string startDate, endDate;
+//	cout << "\nEnter Week Start Date [DD/MM/YY]:\t";
+//	getline(cin, startDate);
+//	cout << "\nEnter Week End Date [DD/MM/YY]:\t\t";
+//	getline(cin, endDate);
+//}
 
 //Creating a function that takes inputs pointing to the variables within Employees struct
 struct Employees* inputValue(struct Employees* p)
