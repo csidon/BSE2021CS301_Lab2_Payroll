@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <fstream>
 using namespace std;
 
 struct Employees {
@@ -10,6 +11,7 @@ struct Employees {
 	//constructor (to help computer allocate space to struct)
 	Employees(string fN = "", string mN = "", string lN = "", string sA = "", string s = "", string c = "", string eA = "", int i = 000, int cN = 0, int ird = 0, int t = 0, float hW = 0.0, float hR = 0.0, float gWp = 0.0, float tR = 0.0, float tD = 0.0, float nWp = 0.0)
 	{
+		//static values
 		firstName = fN;
 		middleName = mN;
 		lastName = lN;
@@ -21,8 +23,11 @@ struct Employees {
 		id = i;
 		irdNum = ird;
 		taxCode = t;
-		hoursWorked = hW;
 		hourlyRate = hR;
+
+		//input (changing) values
+		hoursWorked = hW;
+		//calculated values
 		grossWkPay = gWp;
 		taxRate = tR;
 		taxDeduct = tD;
@@ -39,10 +44,20 @@ void whatWeek();
 
 int main() 
 {
-	//Defining a variable "details" in Struct SPCA
-	Employees details;
+	//Defining a variable "details" in Struct Employees 
+	Employees record;
 	Employees* empPtr;
-	empPtr = &details; //creating a pointer from variable "details" within the SPCA datatype
+	empPtr = &record; //creating a pointer from variable "details" within the SPCA datatype
+
+	int numRecords = 2;
+
+	fstream recordsIOfile;
+	recordsIOfile.open("C:/Users/Chris/Desktop/Yoobee/CS103_Oct21/BSE2021CS301_Lab2_Payroll/payroll.csv", ios::app);
+	for (int i = 0; i < numRecords; i++)
+	{
+		enterRecords(recordsIOfile);
+	}
+
 
 	line(50);
 	whatWeek();
@@ -62,6 +77,12 @@ void line(int lineLen)
 	{
 		cout << "-";
 	}
+}
+
+void enterRecords(fileRecords)
+{
+	
+
 }
 
 void whatWeek()
